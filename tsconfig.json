@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		"module": "ES6",
+		"rootDir": "./src",
+		"target": "ES6",
+		"outDir": "./build"
+	},
+	"include": ["./src/**/*.ts"]
+}
