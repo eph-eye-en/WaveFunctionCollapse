@@ -1,10 +1,10 @@
-import { IEdge, IRotatable, Tile } from "./Tile.js";
+import { IEdge, IMirror, IRotatable, Tile } from "./Tile.js";
 
 function reverseString(s: string): string {
 	return s.split("").reverse().join("");
 }
 
-export default class ReflexiveStringEdge implements IEdge {
+export default class ReflexiveStringEdge implements IEdge, IMirror {
 	private pattern: string;
 	constructor(pattern: string) {
 		this.pattern = pattern;
@@ -20,5 +20,13 @@ export default class ReflexiveStringEdge implements IEdge {
 		Tile<Img, ReflexiveStringEdge> {
 		return new Tile(img, patterns.map(p => new ReflexiveStringEdge(p)),
 			freq);
+	}
+
+	mirrorX(): IMirror {
+		return new ReflexiveStringEdge(this.pattern);
+	}
+
+	mirrorY(): IMirror {
+		return new ReflexiveStringEdge(reverseString(this.pattern));
 	}
 }
